@@ -1,4 +1,7 @@
 var amqp = require('amqplib');
+const { v4: uuidv4 } = require('uuid');
+const faker = require('@faker-js/faker');
+
 
 async function main() {
     const queue = 'hello';
@@ -12,8 +15,8 @@ async function main() {
             type: 'PERSON',
             event: 'ADD',
             payload: {
-                id: 123,
-                name: 'Abdel Raoof',
+                id: uuidv4(),
+                name: faker.name.findName(),
                 time: new Date().toLocaleTimeString()
             }
         }
